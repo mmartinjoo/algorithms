@@ -1,0 +1,4 @@
+*.swp
+composer.json
+tags
+vendor
