@@ -4,6 +4,7 @@ namespace Jmweb\Tests\Algorithm;
 
 use PHPUnit\Framework\TestCase;
 use Jmweb\Exception\IndexOutOfBoundsException;
+use Jmweb\Exception\IteratorOutOfBoundsException;
 
 abstract class AbstractListTestCase extends TestCase
 {
@@ -35,13 +36,13 @@ abstract class AbstractListTestCase extends TestCase
 
         $list->insert(0, self::VALUE_A);
         $list->insert(1, self::VALUE_B);
-        $list->insert(1, self::VALUE_C);
+        $list->insert(2, self::VALUE_C);
 
         $this->assertEquals(3, $list->size());
 
         $this->assertEquals(self::VALUE_A, $list->get(0));
-        $this->assertEquals(self::VALUE_C, $list->get(1));
-        $this->assertEquals(self::VALUE_B, $list->get(2));
+        $this->assertEquals(self::VALUE_B, $list->get(1));
+        $this->assertEquals(self::VALUE_C, $list->get(2));
     }
 
     public function testInsertBeforeFirstElement()
@@ -49,11 +50,11 @@ abstract class AbstractListTestCase extends TestCase
         $list = $this->createList();
 
         $list->insert(0, self::VALUE_A);
-        $list->insert(0, self::VALUE_B);
+        $list->insert(1, self::VALUE_B);
 
         $this->assertEquals(2, $list->size());
-        $this->assertEquals(self::VALUE_B, $list->get(0));
-        $this->assertEquals(self::VALUE_A, $list->get(1));
+        $this->assertEquals(self::VALUE_A, $list->get(0));
+        $this->assertEquals(self::VALUE_B, $list->get(1));
     }
 
     public function testInsertAfterLastElement()
@@ -278,12 +279,12 @@ abstract class AbstractListTestCase extends TestCase
         $this->assertEquals(1, $list->size());
         $this->assertEquals(self::VALUE_B, $list->get(1));
 
-        $this->assertTrue($list->delete(self::VALUE_C));
+        $this->assertFalse($list->deleteByValue(self::VALUE_C));
 
         $this->assertEquals(1, $list->size());
         $this->assertEquals(self::VALUE_B, $list->get(1));
 
-        $this->assertTrue($list->delete(self::VALUE_B));
+        $this->assertTrue($list->deleteByValue(self::VALUE_B));
 
         $this->assertEquals(0, $list->size());
     }
@@ -291,7 +292,7 @@ abstract class AbstractListTestCase extends TestCase
     public function testEmptyIteration()
     {
         $list = $this->createList();
-        $iterator = $this->iterator();
+        $iterator = $list->iterator();
 
         $this->assertTrue($iterator->isDone());
 
@@ -336,7 +337,7 @@ abstract class AbstractListTestCase extends TestCase
         }
     }
 
-    public function testForwardBackwards()
+    public function testBackwardIteration()
     {
         $list = $this->createList();
 
@@ -348,7 +349,7 @@ abstract class AbstractListTestCase extends TestCase
         
         $iterator->last();
         $this->assertFalse($iterator->isDone());
-        $this->assertEquals(self::VALUE_A, $iterator->current());
+        $this->assertEquals(self::VALUE_C, $iterator->current());
 
         $iterator->previous();
         $this->assertFalse($iterator->isDone());
@@ -356,7 +357,7 @@ abstract class AbstractListTestCase extends TestCase
 
         $iterator->previous();
         $this->assertFalse($iterator->isDone());
-        $this->assertEquals(self::VALUE_C, $iterator->current());
+        $this->assertEquals(self::VALUE_A, $iterator->current());
 
         $iterator->previous();
         $this->assertTrue($iterator->isDone());

@@ -66,6 +66,7 @@ class ArrayList implements IList
     public function delete($index)
     {
         $this->checkOutOfBounds($index);
+        $this->checkIsset($index);
         $value = $this->_array[$index];
 
         unset($this->_array[$index]);
@@ -97,6 +98,7 @@ class ArrayList implements IList
     public function set($index, $value)
     {
         $this->checkOutOfBounds($index);
+        $this->checkIsset($index);
         $oldValue = $this->_array[$index];
         $this->_array[$index] = $value;
 
@@ -109,7 +111,8 @@ class ArrayList implements IList
      */
     public function get($index)
     {
-        $this->checkOutOfBounds();
+        $this->checkOutOfBounds($index);
+        $this->checkIsset($index);
         return $this->_array[$index];
     }
 
@@ -164,7 +167,19 @@ class ArrayList implements IList
     protected function checkOutOfBounds($index)
     {
         if ($index < 0) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException($index);
         } 
+    }
+
+    /**
+     * @param int $index 
+     * @throws Jmweb\Exception\IndexOutOfBoundsException
+     * @return void
+     */
+    protected function checkIsset($index)
+    {
+        if (!isset($this->_array[$index])) {
+            throw new IndexOutOfBoundsException($index);
+        }
     }
 }

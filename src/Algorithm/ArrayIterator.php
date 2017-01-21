@@ -42,8 +42,9 @@ class ArrayIterator implements Iterator
             $this->_start = $start;
             $this->_end = $start + $length - 1;
         } else {
-            $this->_start = min(array_keys($array));
-            $this->_end = max(array_keys($array));
+            $keys = array_keys($array);
+            $this->_start = (empty($keys)) ? 0 : min($keys);
+            $this->_end = (empty($keys)) ? 0 : max($keys);
         }
     }
 
