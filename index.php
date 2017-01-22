@@ -5,6 +5,7 @@ use Jmweb\Algorithm\ReverseIterator;
 use Jmweb\Algorithm\ArrayList;
 use Jmweb\Algorithm\LinkedList;
 use Jmweb\Algorithm\ListFifoQueue;
+use Jmweb\Algorithm\ListStack;
 
 error_reporting(E_ALL);
 require 'vendor/autoload.php';
@@ -99,14 +100,28 @@ require 'vendor/autoload.php';
 
 /* echo $otherList; */
 
-$queue = new ListFifoQueue;
+/* $queue = new ListFifoQueue; */
 
-$queue->enqueue('Marcsi');
-$queue->enqueue('Martin');
-$queue->enqueue('Béla');
+/* $queue->enqueue('Marcsi'); */
+/* $queue->enqueue('Martin'); */
+/* $queue->enqueue('Béla'); */
 
-dump($queue->dequeue());
-dump($queue->dequeue());
-dump($queue->dequeue());
+/* dump($queue->dequeue()); */
+/* dump($queue->dequeue()); */
+/* dump($queue->dequeue()); */
 
-dump($queue->isEmpty());
+/* dump($queue->isEmpty()); */
+
+$stack = new ListStack; 
+
+$stack->push('A');
+$stack->push('B');
+$stack->push('C');
+
+dump($stack->pop());
+dump($stack->pop());
+dump($stack->pop());
+
+$stack->push(2);
+dump($stack->peek());
+dump($stack->size());
