@@ -70,4 +70,10 @@ interface IList extends Iterable
      * @return bool
      */
     public function isEmpty();
+
+    /**
+     * @param IList $list 
+     * @return bool
+     */
+    public function equals(IList $list);
 }

@@ -5,8 +5,9 @@ namespace Jmweb\Algorithm;
 use Jmweb\Exception\IndexOutOfBoundsException;
 use Jmweb\Algorithm\IList;
 use Jmweb\Algorithm\ArrayIterator;
+use Jmweb\Algorithm\AbstractList;
 
-class ArrayList implements IList
+class ArrayList extends AbstractList
 {
     /**
      * @var array
@@ -117,24 +118,6 @@ class ArrayList implements IList
 
     /**
      * @param mixed $value 
-     * @return int          -1 if value not found
-     */
-    public function indexOf($value)
-    {
-        /**
-         * @todo BINARIS KERESES
-         */
-        foreach ($this->_array as $i => $item) {
-            if ($item == $value) {
-                return $i;
-            }
-        }
-
-        return -1;
-    }
-
-    /**
-     * @param mixed $value 
      * @return bool
      */
     public function contains($value)
@@ -180,5 +163,14 @@ class ArrayList implements IList
         if (!isset($this->_array[$index])) {
             throw new IndexOutOfBoundsException($index);
         }
+    }
+
+    /**
+     * @return int
+     */
+    protected function getMinimumIndex()
+    {
+        $indexes = array_keys($this->_array);
+        return min($indexes);
     }
 }

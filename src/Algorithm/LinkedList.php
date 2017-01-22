@@ -6,8 +6,9 @@ use Jmweb\Exception\IndexOutOfBoundsException;
 use Jmweb\Algorithm\IList;
 use Jmweb\Algorithm\ValueIterator;
 use Jmweb\Algorithm\Element;
+use Jmweb\Algorithm\AbstractList;
 
-class LinkedList implements IList
+class LinkedList extends AbstractList
 {
     protected $_headAndTail;
 
@@ -76,27 +77,6 @@ class LinkedList implements IList
         $element->setValue($value);
 
         return $oldValue;
-    }
-
-    /**
-     * @param mixed $value 
-     * @return int          -1 if not found
-     */
-    public function indexOf($value)
-    {
-        $index = 0;
-        for ($e = $this->_headAndTail->getNext(); 
-                $e != $this->_headAndTail; 
-                $e = $e->getNext()) {
-
-            if ($value == $e->getValue()) {
-                return $index;
-            }
-
-            $index++;
-        }
-
-        return -1;
     }
 
     /**
@@ -172,10 +152,32 @@ class LinkedList implements IList
      */
     protected function getElement($index)
     {
-        /**
-         * @todo Ha az $index a lista elso feleben van, akkor
-         * a head -tol iduljon a kereses. Egyebkent pedig a tail -tol
-         */
+        // Head
+        if ($index == 0) 
+            return $this->_headAndTail->getNext();
+
+        // Tail
+        if ($index == $this->_size - 1)
+            return $this->_headAndTail->getPrevious();
+
+        $half = (int)($this->_size / 2);
+
+        // If $index less then the half of the list, it starts from the head, otherwise it starts from tail
+        if ($index <= $half) {
+            $element = $this->getElementFromHead($index);
+        } else {
+            $element = $this->getElementFromTail($index);
+        }
+
+        return $element;
+    }
+
+    /**
+     * @param int $index 
+     * @return Jmweb\Algorithm\Element
+     */
+    protected function getElementFromHead($index)
+    {
         $element = $this->_headAndTail->getNext();
         for ($i = $index; $i > 0; $i--) {
             $element = $element->getNext();
@@ -183,6 +185,21 @@ class LinkedList implements IList
 
         return $element;
     }
+
+    /**
+     * @param int $index 
+     * @return Jmweb\Algorithm\Element
+     */
+    protected function getElementFromTail($index)
+    {
+        $element = $this->_headAndTail->getPrevious();
+        for ($i = $index; $i > 0; $i--) {
+            $element = $element->getPrevious();
+        }
+
+        return $element;
+    }
+
 
     /**
      * @param int $index 
@@ -201,5 +218,13 @@ class LinkedList implements IList
         if ($index < 0 || $index >= $this->_size) {
             throw new IndexOutOfBoundsException($index);
         }
+    }
+
+    /**
+     * @return int
+     */
+    protected function getMinimumIndex()
+    {
+        return 0;
     }
 }

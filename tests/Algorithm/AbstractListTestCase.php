@@ -412,4 +412,29 @@ abstract class AbstractListTestCase extends TestCase
         $this->assertTrue($list->isEmpty());
         $this->assertEquals(0, $list->size());
     }
+
+    public function testEquals()
+    {
+        $list = $this->createList();
+        $otherList = $this->createList();
+
+        $list->add(self::VALUE_A);
+        $list->add(self::VALUE_B);
+        $list->add(self::VALUE_C);
+
+        $otherList->add(self::VALUE_A);
+        $otherList->add(self::VALUE_B);
+        $otherList->add(self::VALUE_C);
+
+        $this->assertTrue($list->equals($otherList));
+
+        $otherList->delete(2);
+        $this->assertFalse($list->equals($otherList));
+
+        $list->delete(2);
+        $this->assertTrue($list->equals($otherList));
+
+        $otherList->set(1, self::VALUE_C);
+        $this->assertFalse($list->equals($otherList));
+    }
 }
