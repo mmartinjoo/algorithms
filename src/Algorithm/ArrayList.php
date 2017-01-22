@@ -2,7 +2,6 @@
 
 namespace Jmweb\Algorithm;
 
-use Jmweb\Algorithm;
 use Jmweb\Exception\IndexOutOfBoundsException;
 use Jmweb\Algorithm\IList;
 use Jmweb\Algorithm\ArrayIterator;

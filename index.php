@@ -3,6 +3,7 @@
 use Jmweb\Algorithm\ArrayIterator;
 use Jmweb\Algorithm\ReverseIterator;
 use Jmweb\Algorithm\ArrayList;
+use Jmweb\Algorithm\LinkedList;
 
 error_reporting(E_ALL);
 require 'vendor/autoload.php';
@@ -19,36 +20,54 @@ require 'vendor/autoload.php';
 /*     var_dump($reverseIterator->current()); */
 /* } */
 
-$list = new ArrayList;
+/* $list = new ArrayList; */
 
-dump($list->isEmpty());
+/* dump($list->isEmpty()); */
 
-$list->add('Martin');
-$list->add('Marcsi');
-$list->add('Béla');
+/* $list->add('Martin'); */
+/* $list->add('Marcsi'); */
+/* $list->add('Béla'); */
+
+/* $iterator = $list->iterator(); */
+/* for ($iterator->first(); !$iterator->isDone(); $iterator->next()) { */
+    /* dump($iterator->current()); */
+/* } */
+
+/* dump($list->get(0)); */
+/* dump($list->indexOf('Marcsi')); */
+/* dump($list->indexOf('hello')); */
+/* dump($list->contains('Béla')); */
+/* dump($list->contains('Hello')); */
+/* dump($list->size()); */
+/* dump($list->isEmpty()); */
+
+/* dump($list->delete(2)); */
+/* dump($list->size()); */
+
+/* dump($list->deleteByValue('Martin')); */
+/* dump($list->size()); */
+
+/* dump($list->set(1, 'MARCSI')); */
+/* dump($list->get(1)); */
+
+/* dump($list->clear()); */
+/* dump($list->size()); */
+/* dump($list->isEmpty()); */
+
+$list = new LinkedList;
+$list->add(1);
+$list->add(2);
 
 $iterator = $list->iterator();
 for ($iterator->first(); !$iterator->isDone(); $iterator->next()) {
     dump($iterator->current());
 }
 
-dump($list->get(0));
-dump($list->indexOf('Marcsi'));
-dump($list->indexOf('hello'));
-dump($list->contains('Béla'));
-dump($list->contains('Hello'));
-dump($list->size());
-dump($list->isEmpty());
-
-dump($list->delete(2));
 dump($list->size());
 
-dump($list->deleteByValue('Martin'));
+dump($list->delete(1));
 dump($list->size());
 
-dump($list->set(1, 'MARCSI'));
-dump($list->get(1));
-
-dump($list->clear());
+dump($list->deleteByValue(1));
 dump($list->size());
 dump($list->isEmpty());

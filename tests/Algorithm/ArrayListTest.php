@@ -8,6 +8,9 @@ use Jmweb\Algorithm\ArrayList;
 
 class ArrayListTest extends AbstractListTestCase
 {
+     /**
+      * @return Jmweb\Algorithm\ArrayList;
+      */
      protected function createList()
      {
          return new ArrayList();
