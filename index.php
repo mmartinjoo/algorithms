@@ -6,6 +6,7 @@ use Jmweb\Algorithm\ArrayList;
 use Jmweb\Algorithm\LinkedList;
 use Jmweb\Algorithm\ListFifoQueue;
 use Jmweb\Algorithm\ListStack;
+use Jmweb\Algorithm\UndoableList;
 
 error_reporting(E_ALL);
 require 'vendor/autoload.php';
@@ -112,16 +113,32 @@ require 'vendor/autoload.php';
 
 /* dump($queue->isEmpty()); */
 
-$stack = new ListStack; 
+/* $stack = new ListStack; */ 
 
-$stack->push('A');
-$stack->push('B');
-$stack->push('C');
+/* $stack->push('A'); */
+/* $stack->push('B'); */
+/* $stack->push('C'); */
 
-dump($stack->pop());
-dump($stack->pop());
-dump($stack->pop());
+/* dump($stack->pop()); */
+/* dump($stack->pop()); */
+/* dump($stack->pop()); */
 
-$stack->push(2);
-dump($stack->peek());
-dump($stack->size());
+/* $stack->push(2); */
+/* dump($stack->peek()); */
+/* dump($stack->size()); */
+
+$list = new UndoableList();
+
+$list->add('Martin');
+$list->add('Marcsi');
+$list->add('Béla');
+
+$list->undo();
+
+
+$list->set(0, 'Martin1');
+
+$list->undo();
+
+$list->undo();
+dump($list);
