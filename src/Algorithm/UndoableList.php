@@ -2,13 +2,13 @@
 
 namespace Jmweb\Algorithm;
 
-use Jmweb\Algorithm\IList;
+use Jmweb\Algorithm\AbstractList;
 use Jmweb\Algorithm\ListStack;
 use Jmweb\Algorithm\Action\UndoInsertAction;
 use Jmweb\Algorithm\Action\UndoDeleteAction;
 use Jmweb\Algorithm\Action\UndoSetAction;
 
-class UndoableList implements IList
+class UndoableList extends AbstractList
 {
     /**
      * @var Jmweb\Algorithm\IList
@@ -167,5 +167,14 @@ class UndoableList implements IList
     public function get($index)
     {
         return $this->_list->get($index);
+    }
+
+    /**
+     * @return int
+     */
+    protected function getMinimumIndex()
+    {
+        $indexes = array_keys($this->_array);
+        return min($indexes);
     }
 }

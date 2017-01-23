@@ -152,24 +152,31 @@ class LinkedList extends AbstractList
      */
     protected function getElement($index)
     {
-        // Head
-        if ($index == 0) 
-            return $this->_headAndTail->getNext();
-
-        // Tail
-        if ($index == $this->_size - 1)
-            return $this->_headAndTail->getPrevious();
-
-        $half = (int)($this->_size / 2);
-
-        // If $index less then the half of the list, it starts from the head, otherwise it starts from tail
-        if ($index <= $half) {
-            $element = $this->getElementFromHead($index);
-        } else {
-            $element = $this->getElementFromTail($index);
+        $e = $this->_headAndTail->getNext();
+        for ($i = $index; $i > 0; $i--) {
+            $e = $e->getNext();
         }
 
-        return $element;
+        return $e;
+
+        // Head
+        /* if ($index == 0) */ 
+        /*     return $this->_headAndTail->getNext(); */
+
+        // Tail
+        /* if ($index == $this->_size - 1) */
+        /*     return $this->_headAndTail->getPrevious(); */
+
+        /* $half = (int)($this->_size / 2); */
+
+        // If $index less then the half of the list, it starts from the head, otherwise it starts from tail
+        /* if ($index <= $half) { */
+        /*     $element = $this->getElementFromHead($index); */
+        /* } else { */
+        /*     $element = $this->getElementFromTail($index); */
+        /* } */
+
+        /* return $element; */
     }
 
     /**

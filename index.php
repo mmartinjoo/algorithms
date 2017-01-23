@@ -7,6 +7,8 @@ use Jmweb\Algorithm\LinkedList;
 use Jmweb\Algorithm\ListFifoQueue;
 use Jmweb\Algorithm\ListStack;
 use Jmweb\Algorithm\UndoableList;
+use Jmweb\Algorithm\Comparator\NaturalComparator;
+use Jmweb\Algorithm\Comparator\Text;
 
 error_reporting(E_ALL);
 require 'vendor/autoload.php';
@@ -127,18 +129,23 @@ require 'vendor/autoload.php';
 /* dump($stack->peek()); */
 /* dump($stack->size()); */
 
-$list = new UndoableList();
+/* $list = new UndoableList(); */
 
-$list->add('Martin');
-$list->add('Marcsi');
-$list->add('Béla');
+/* $list->add('Martin'); */
+/* $list->add('Marcsi'); */
+/* $list->add('Béla'); */
 
-$list->undo();
+/* $list->undo(); */
 
 
-$list->set(0, 'Martin1');
+/* $list->set(0, 'Martin1'); */
 
-$list->undo();
+/* $list->undo(); */
 
-$list->undo();
-dump($list);
+/* $list->undo(); */
+/* dump($list); */
+
+/* $comparator = NaturalComparator::instance(); */
+/* dump($comparator); */
+
+$asciis = Text::getAsciiCodes('űáéúőóüöíabc');

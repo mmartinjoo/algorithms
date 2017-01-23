@@ -74,4 +74,21 @@ abstract class AbstractList implements IList
 
         return $string . "]";
     }
+
+    /**
+     * @return int
+     */
+    public function sum()
+    {
+        $iterator = $this->iterator();
+        $sum = 0;
+
+        for ($iterator->first(); !$iterator->isDone(); $iterator->next()) {
+            if (is_scalar($iterator->current())) {
+                $sum += $iterator->current();
+            }
+        }
+
+        return $sum;
+    }
 }

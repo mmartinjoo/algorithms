@@ -76,4 +76,9 @@ interface IList extends Iterable
      * @return bool
      */
     public function equals(IList $list);
+
+    /**
+     * @return mixed
+     */
+    public function sum();
 }

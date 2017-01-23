@@ -437,4 +437,76 @@ abstract class AbstractListTestCase extends TestCase
         $otherList->set(1, self::VALUE_C);
         $this->assertFalse($list->equals($otherList));
     }
+
+    public function testSumIntegers()
+    {
+        $list = $this->createList();
+
+        $list->add(1);
+        $list->add(2);
+        $list->add(3);
+
+        $this->assertEquals(6, $list->sum());
+    }
+
+    public function testSumFloats()
+    {
+        $list = $this->createList();
+
+        $list->add(1.5);
+        $list->add(2.2);
+        $list->add(3.1);
+
+        $this->assertEquals(6.8, $list->sum());
+    }
+
+    public function testSumNotScalar()
+    {
+        $list = $this->createList();
+
+        $list->add(new \DateTime);
+        $list->add('Some string here');
+
+        $this->assertEquals(0, $list->sum());
+    }
+
+    public function testSumBools()
+    {
+        $list = $this->createList();
+
+        $list->add(true);
+        $list->add(true);
+        $list->add(false);
+
+        $this->assertEquals(2, $list->sum());
+    }
+
+    public function testGet()
+    {
+        $list = $this->createList();
+
+        $list->add(0);
+        $list->add(1);
+        $list->add(2);
+        $list->add(3);
+        $list->add(4);
+        $list->add(5);
+        $list->add(6);
+        $list->add(7);
+        $list->add(8);
+        $list->add(9);
+        $list->add(10);
+
+        $this->assertEquals(0, $list->get(0));
+        $this->assertEquals(1, $list->get(1));
+        $this->assertEquals(2, $list->get(2));
+        $this->assertEquals(3, $list->get(3));
+        $this->assertEquals(4, $list->get(4));
+        $this->assertEquals(5, $list->get(5));
+        $this->assertEquals(6, $list->get(6));
+        $this->assertEquals(7, $list->get(7));
+        $this->assertEquals(8, $list->get(8));
+        $this->assertEquals(9, $list->get(9));
+        $this->assertEquals(10, $list->get(10));
+    }
 }
