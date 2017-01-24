@@ -54,70 +54,70 @@ class ListSorterCallCountingTest extends TestCase
     {
         $sorter = new BubbleListSorter($this->_comparator);
         $sorter->sort($this->_reverseList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testWorstCaseSelectionSort()
     {
         $sorter = new SelectionListSorter($this->_comparator);
         $sorter->sort($this->_reverseList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testWorstCaseInsertionSort()
     {
         $sorter = new InsertionListSorter($this->_comparator);
         $sorter->sort($this->_reverseList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testBestCaseBubbleSort()
     {
         $sorter = new BubbleListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testBestCaseSelectionSort()
     {
         $sorter = new SelectionListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testBestCaseInsertionSort()
     {
         $sorter = new InsertionListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testAvarageCaseBubbleSort()
     {
         $sorter = new BubbleListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testAvarageCaseSelectionSort()
     {
         $sorter = new SelectionListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     public function testAvarageCaseInsertionSort()
     {
         $sorter = new InsertionListSorter($this->_comparator);
         $sorter->sort($this->_sortedList);
-        $this->reportCalls($this->_comparator->getCount());
+        $this->reportPerformance($this->_comparator->getCount());
     }
 
     /**
      * @param int $callCount 
      * @return void
      */
-    protected function reportCalls($callCount)
+    protected function reportPerformance($callCount)
     {
         $this->_endTime = microtime();
         $this->_endMemoryUsage = memory_get_usage();
