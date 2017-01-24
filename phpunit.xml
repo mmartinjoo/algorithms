@@ -10,7 +10,10 @@
 <phpunit colors="true" bootstrap="./vendor/autoload.php">
 	<testsuites>
 		<testsuite name="Tests">
-			<directory>./tests/</directory>
+                    <directory>./tests/</directory>
+		</testsuite>
+		<testsuite name="PerformanceTests">
+                    <directory>./tests/Algorithm/Sorter/ListSorterCallCountingTest.php</directory>
 		</testsuite>
 	</testsuites>
 
