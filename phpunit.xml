@@ -12,8 +12,11 @@
 		<testsuite name="Tests">
                     <directory>./tests/</directory>
 		</testsuite>
-		<testsuite name="PerformanceTests">
-                    <directory>./tests/Algorithm/Sorter/ListSorterCallCountingTest.php</directory>
+		<testsuite name="ListSorterPerformaceTests">
+                    <directory>./tests/Algorithm/Sorter/ListSorterPerformaceTest.php</directory>
+		</testsuite>
+		<testsuite name="QuickSortTest">
+                    <directory>./tests/Algorithm/Sorter/QuickSortListSorterTest.php</directory>
 		</testsuite>
 	</testsuites>
 

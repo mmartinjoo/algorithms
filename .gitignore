@@ -2,3 +2,5 @@
 composer.json
 tags
 vendor
+
+src/Algorithm/Sorter/.ListSorter.php.swo
