@@ -21,6 +21,9 @@
 		<testsuite name="MergeSortTests">
                     <directory>./tests/Algorithm/Sorter/MergeSortListSorterTest.php</directory>
 		</testsuite>
+		<testsuite name="CompoundComparatorTests">
+                    <directory>./tests/Algorithm/Comparator/CompoundComparatorTest.php</directory>
+		</testsuite>
 	</testsuites>
 
 	<filter>
