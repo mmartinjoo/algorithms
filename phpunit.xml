@@ -24,6 +24,9 @@
 		<testsuite name="CompoundComparatorTests">
                     <directory>./tests/Algorithm/Comparator/CompoundComparatorTest.php</directory>
 		</testsuite>
+		<testsuite name="CurrentTests">
+                    <directory>./tests/Algorithm/UnsortedListPriorityQueueTest.php</directory>
+		</testsuite>
 	</testsuites>
 
 	<filter>
