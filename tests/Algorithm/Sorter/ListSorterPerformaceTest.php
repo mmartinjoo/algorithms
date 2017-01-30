@@ -9,6 +9,7 @@ use Jmweb\Algorithm\Sorter\BubbleListSorter;
 use Jmweb\Algorithm\Sorter\SelectionListSorter;
 use Jmweb\Algorithm\Sorter\InsertionListSorter;
 use Jmweb\Algorithm\Sorter\QuickSortListSorter;
+use Jmweb\Algorithm\Sorter\MergeSortListSorter;
 use Jmweb\Algorithm\InsertCountingLinkedList;
 
 class ListSorterPerformaceTest extends TestCase
@@ -83,6 +84,13 @@ class ListSorterPerformaceTest extends TestCase
         $this->reportPerformance($this->_comparator->getCount());
     }
 
+    public function testWorstCaseMergeSort()
+    {
+        $sorter = new MergeSortListSorter($this->_comparator);
+        $sorter->sort($this->_reverseList);
+        $this->reportPerformance($this->_comparator->getCount());
+    }
+
     public function testBestCaseBubbleSort()
     {
         $sorter = new BubbleListSorter($this->_comparator);
@@ -111,6 +119,13 @@ class ListSorterPerformaceTest extends TestCase
         $this->reportPerformance($this->_comparator->getCount());
     }
 
+    /* public function testBestCaseMergeSort() */
+    /* { */
+    /*     $sorter = new MergeSortListSorter($this->_comparator); */
+    /*     $sorter->sort($this->_sortedList); */
+    /*     $this->reportPerformance($this->_comparator->getCount()); */
+    /* } */
+
     public function testAvarageCaseBubbleSort()
     {
         $sorter = new BubbleListSorter($this->_comparator);
@@ -135,6 +150,13 @@ class ListSorterPerformaceTest extends TestCase
     public function testAvarageCaseQuickSort()
     {
         $sorter = new QuickSortListSorter($this->_comparator);
+        $sorter->sort($this->_randomList);
+        $this->reportPerformance($this->_comparator->getCount());
+    }
+
+    public function testAvarageCaseMergeSort()
+    {
+        $sorter = new MergeSortListSorter($this->_comparator);
         $sorter->sort($this->_randomList);
         $this->reportPerformance($this->_comparator->getCount());
     }
