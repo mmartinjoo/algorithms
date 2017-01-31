@@ -25,7 +25,7 @@
                     <directory>./tests/Algorithm/Comparator/CompoundComparatorTest.php</directory>
 		</testsuite>
 		<testsuite name="CurrentTests">
-                    <directory>./tests/Algorithm/UnsortedListPriorityQueueTest.php</directory>
+                    <directory>./tests/Algorithm/SortedListPriorityQueueTest.php</directory>
 		</testsuite>
 	</testsuites>
 
